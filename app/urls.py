@@ -6,5 +6,5 @@ from books.views import books_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('books/', books_view),
+    path('books/', books_view, name='books_list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
