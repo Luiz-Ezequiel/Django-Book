@@ -1,11 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from books.models import Book
+from books.forms import BookForm
 
 # Create your views here.
 def books_view(request):
     books = Book.objects.all().order_by('title')
     search = request.GET.get('search')
     if search != None:
-        books = Book.objecs.filter(title__icontains=search)
+        books = Book.objects.filter(title__icontains=search)
 
     return render(request, 'books.html', {'books': books})
+
+def new_book_view(request):
+    if request.method == 'POST':
+        new_book_form = BookForm(request.POST, request.FILES)
+        if new_book_form.is_valid():
+            new_book_form.save()
+            return redirect('books_list')
+    else:
+        new_book_form = BookForm()
+
+    return render(request, 'new_book.html', { 'new_book_form': new_book_form })
