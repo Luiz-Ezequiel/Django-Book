@@ -1,0 +1,7 @@
+asgiref==3.8.1
+Django==5.0.7
+django-isbn-field==0.5.3
+pillow==10.4.0
+python-stdnum==1.20
+six==1.16.0
+sqlparse==0.5.1
