@@ -15,6 +15,7 @@ class BookAdmin(admin.ModelAdmin):
         'synopsis',
         'publication_year',
         'price',
+        'isbn',
     )
     search_fields = ('title',)
 
